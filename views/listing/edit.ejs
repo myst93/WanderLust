@@ -1,0 +1,27 @@
+<% layout("./layouts/biolerplate")%> 
+<!-- // This line includes the boilerplate layout for the page -->
+<body>
+    <h3> Edit Property</h3>
+
+    <form method="POST" action="/listings/<%=listing._id%>?_method=PUT">
+        <input name="title" value="<%=listing.title%>" type="text">
+        <br><br>
+        <textarea name="description"  type="text"> <%=listing.description%></textarea>
+        <br><br>
+        <input name="image" value="<%=listing.image%>" type="text">
+        <br><br>
+        <input name="price" value="<%=listing.price%>" type="number">
+        <br><br>
+        <input name="location" value="<%=listing.location%>" type="text">
+        <br><br>
+        <input name="country" value="<%=listing.country%>" type="text">
+        <br><br>
+    
+
+        <form method="POST" action="listings/<%=listing._id%>/edit">
+            <button> Edit Property </button>
+        </form>
+    </form>
+
+
+</body>
