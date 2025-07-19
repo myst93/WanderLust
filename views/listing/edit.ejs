@@ -1,27 +1,65 @@
-<% layout("./layouts/biolerplate")%> 
+<% layout("./layouts/biolerplate")%>
 <!-- // This line includes the boilerplate layout for the page -->
 <body>
-    <h3> Edit Property</h3>
 
-    <form method="POST" action="/listings/<%=listing._id%>?_method=PUT">
-        <input name="title" value="<%=listing.title%>" type="text">
-        <br><br>
-        <textarea name="description"  type="text"> <%=listing.description%></textarea>
-        <br><br>
-        <input name="image" value="<%=listing.image%>" type="text">
-        <br><br>
-        <input name="price" value="<%=listing.price%>" type="number">
-        <br><br>
-        <input name="location" value="<%=listing.location%>" type="text">
-        <br><br>
-        <input name="country" value="<%=listing.country%>" type="text">
-        <br><br>
+
+    <div class="row mt-3">
+        <div class="col-8 offset-2">
+
+
+  <h3>Edit Property</h3>
+
+  <form method="POST" action="/listings/<%=listing._id%>?_method=PUT">
+    <div class="mb-3">
+      <input
+        name="title"
+        value="<%=listing.title%>"
+        type="text"
+        class="form-control"
+      />
+      <label for="title" class="form-label">Title</label>
+    </div>
+    <div class="mb-3">
+    <textarea name="description" type="text">
+ <%=listing.description%></textarea
+    >
+    <label for="description" class="form-label">Description</label>
+    </div>
+    <div class="mb-3">
+        <label for="image" class="form-label">Image Link</label>
+        <input 
+        name="image[url]" 
+        value="<%= listing.image && listing.image.url ? listing.image.url : (typeof listing.image === 'string' ? listing.image : '') %>" 
+        type="text" 
+        class="form-control"
+        id="image"
+      />
+    </div>
+
+
+    <div class="row">
+    <div class="mb-3 col-md-4">
+        <label for="price" class="form-label">Price</label>
+        <input name="price" value="<%=listing.price%>" type="number" class="form-control" />
+    </div>
+
+    <div class="mb-3 col-md-8">
+        <label for="country" class="form-label">Country</label>
+        <input name="country" value="<%=listing.country%>" type="text" class="form-control" />
+    </div>
+    </div>
     
+        <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input name="location" value="<%=listing.location%>" type="text" class="form-control" />
+    </div>
 
-        <form method="POST" action="listings/<%=listing._id%>/edit">
-            <button> Edit Property </button>
-        </form>
+    
+    <form method="POST" action="listings/<%=listing._id%>/edit">
+      <button class="btn btn-dark mt-3">Edit Property</button>
+      <br /><br />
     </form>
-
-
+  </form>
+          </div>
+    </div>
 </body>
