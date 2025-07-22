@@ -4,10 +4,11 @@ const app= express();
 const Listing = require('./models/listing.js');
 const path= require('path');
 const MethodOverride = require('method-override');
-const ejsMate = require('ejs-mate');
+const ejsMate = require('ejs-mate'); // ejs-locals for all ejs templates; it gives better support for layouts and partials AND it is used to extend the functionality of EJS  which makes it much better layouts and prettier code
 
 
-app.set("view engine", "ejs")
+
+app.set("view engine", "ejs") // set the view engine to ejs
 app.set("views", path.join(__dirname,"views"))
 app.use(express.urlencoded({extended:true}))
 app.use(MethodOverride("_method"))
@@ -39,7 +40,7 @@ app.get('/listings', async (req,res)=>{
 
 
 //New and Create Route
-//yeh wala get request upar aayga show route kuki agar hum isko neecha rakh raha h toh yeh usko as a ID treat kar raha h
+//yeh wala get request upar aayga show route ke kuki agar hum isko neecha rakh raha h toh yeh usko as a ID treat kar raha h
 app.get('/listings/new', (req,res)=>{
   res.render('./listing/new.ejs')
 })
@@ -57,7 +58,7 @@ app.post('/listings', async (req,res)=>{
   // let {title,description,image,price,location,country}=req.body 
  //this is not the good apprach instead we can make the changes in the form and make as a object
 //  let listing = req.body
- const newlisting=new Listing(req.body)
+ const newlisting=new Listing(req.body) // create a new instance of the Listing model with the data from the form
  await newlisting.save();
  res.redirect('/listings')
 })

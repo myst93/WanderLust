@@ -45,5 +45,6 @@ const ListingSchema = new Schema({
     country: String
 });
 
-const Listing = mongoose.model('Listing', ListingSchema);
-module.exports = Listing;
+const Listing = mongoose.model('Listing', ListingSchema); 
+// Create the Listing model based on the ListingSchema
+module.exports = Listing; // This exports the Listing model so it can be used in other files
