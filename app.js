@@ -1,9 +1,9 @@
 const express= require('express');
 const mongoose= require('mongoose');
-const app= express();
+const app = express();
 const Listing = require('./models/listing.js');
 const path= require('path');
-const MethodOverride = require('method-override');
+const MethodOverride = require('method-override');// yeh middleware h jo ki form ke method ko override karta h jaise ki hum form mein sirf GET and POST use kar sakte h but hum iske through PUT and DELETE bhi use kar sakte h
 const ejsMate = require('ejs-mate'); // ejs-locals for all ejs templates; it gives better support for layouts and partials AND it is used to extend the functionality of EJS  which makes it much better layouts and prettier code
 
 
@@ -19,9 +19,9 @@ main()
   .then(res=>{
     console.log('Database connected successfully');
   })
-    .catch(err=>{
+  .catch(err=>{
     console.error('Database connection failed:', err);
-    })
+  })
 
 
 async function main(){

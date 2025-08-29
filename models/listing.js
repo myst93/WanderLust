@@ -28,7 +28,7 @@
 
 
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const Schema = mongoose.Schema; // Import mongoose and extract Schema constructor
 
 const ListingSchema = new Schema({
     title: {
